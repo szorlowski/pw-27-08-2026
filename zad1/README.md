@@ -23,13 +23,24 @@ pip install -r requirements.txt
 
 ### Konfiguracja klucza API
 
-1. Skopiuj `api_key.example.txt` do `api_key.txt`:
-   ```bash
-   cp api_key.example.txt api_key.txt
-   ```
-2. Wklej swój klucz API Anthropic do `api_key.txt` (jedna linia, sam klucz).
+Klucz można ustawić na dwa sposoby (aplikacja sprawdza je w tej kolejności):
 
-Plik `api_key.txt` jest w `.gitignore` — nie trafi do repozytorium.
+**1. Lokalnie (tylko dla tego folderu)**
+
+```bash
+cp api_key.example.txt api_key.txt
+```
+
+i wklej klucz do `api_key.txt` (jedna linia, sam klucz). Plik jest w
+`.gitignore` — nie trafi do repozytorium.
+
+**2. Globalnie (dla wszystkich zadań na tym komputerze)**
+
+Wklej klucz do pliku w swoim folderze domowym — wystarczy zrobić to raz i
+każde kolejne zadanie (`zad2`, `zad3`, ...) go znajdzie bez kopiowania:
+
+- Windows: `%USERPROFILE%\.anthropic\api_key.txt`
+- Linux/macOS: `~/.anthropic/api_key.txt`
 
 ### Uruchomienie
 
