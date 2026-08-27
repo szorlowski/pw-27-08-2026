@@ -7,7 +7,7 @@ MODEL = "claude-opus-5"
 MAX_TOKENS = 4096
 KEY_FILE = Path(__file__).parent / "api_key.txt"
 KEY_EXAMPLE_FILE = Path(__file__).parent / "api_key.example.txt"
-GLOBAL_KEY_FILE = Path.home() / ".anthropic" / "api_key.txt"
+ROOT_KEY_FILE = Path(__file__).parent.parent / "api_key.txt"
 PLACEHOLDER = "WKLEJ_TUTAJ_SWOJ_KLUCZ_API_ANTHROPIC"
 
 
@@ -22,8 +22,8 @@ def load_api_key() -> str:
         if key:
             return key
 
-    if GLOBAL_KEY_FILE.exists():
-        key = _read_key(GLOBAL_KEY_FILE)
+    if ROOT_KEY_FILE.exists():
+        key = _read_key(ROOT_KEY_FILE)
         if key:
             return key
 
@@ -31,8 +31,9 @@ def load_api_key() -> str:
         "Nie znaleziono klucza API. Ustaw go w jeden z dwoch sposobow:\n"
         f"  - lokalnie: skopiuj {KEY_EXAMPLE_FILE.name} do {KEY_FILE.name} "
         "w tym folderze i wklej tam klucz,\n"
-        f"  - globalnie (dla wszystkich zadan): wklej klucz do "
-        f"{GLOBAL_KEY_FILE}"
+        f"  - wspolnie dla wszystkich zadan: wklej klucz do pliku "
+        f"{ROOT_KEY_FILE.name} w glownym folderze repozytorium "
+        f"({ROOT_KEY_FILE})"
     )
 
 
@@ -65,7 +66,7 @@ def main() -> None:
         except anthropic.AuthenticationError:
             sys.exit(
                 f"Nieprawidlowy klucz API (sprawdz {KEY_FILE.name} lub "
-                f"{GLOBAL_KEY_FILE})."
+                f"{ROOT_KEY_FILE})."
             )
         except anthropic.RateLimitError:
             print("Przekroczono limit zapytan, sprobuj ponownie za chwile.\n")

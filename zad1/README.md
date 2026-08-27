@@ -34,13 +34,12 @@ cp api_key.example.txt api_key.txt
 i wklej klucz do `api_key.txt` (jedna linia, sam klucz). Plik jest w
 `.gitignore` — nie trafi do repozytorium.
 
-**2. Globalnie (dla wszystkich zadań na tym komputerze)**
+**2. Wspólnie (dla wszystkich zadań w tym repozytorium)**
 
-Wklej klucz do pliku w swoim folderze domowym — wystarczy zrobić to raz i
-każde kolejne zadanie (`zad2`, `zad3`, ...) go znajdzie bez kopiowania:
-
-- Windows: `%USERPROFILE%\.anthropic\api_key.txt`
-- Linux/macOS: `~/.anthropic/api_key.txt`
+Wklej klucz do pliku `api_key.txt` w **głównym folderze repozytorium**
+(jeden poziom wyżej niż `zad1`) — wystarczy zrobić to raz i każde kolejne
+zadanie (`zad2`, `zad3`, ...) go znajdzie bez kopiowania. Ten plik też jest
+w `.gitignore`.
 
 ### Uruchomienie
 
