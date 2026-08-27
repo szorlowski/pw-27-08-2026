@@ -17,7 +17,12 @@ def load_api_key() -> str:
         )
 
     key = KEY_FILE.read_text(encoding="utf-8").strip()
-    if not key or key == KEY_EXAMPLE_FILE.read_text(encoding="utf-8").strip():
+    placeholder = (
+        KEY_EXAMPLE_FILE.read_text(encoding="utf-8").strip()
+        if KEY_EXAMPLE_FILE.exists()
+        else "WKLEJ_TUTAJ_SWOJ_KLUCZ_API_ANTHROPIC"
+    )
+    if not key or key == placeholder:
         sys.exit(f"Wklej prawdziwy klucz API do {KEY_FILE.name}.")
 
     return key
