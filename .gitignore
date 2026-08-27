@@ -1,5 +1,7 @@
 api_key.txt
+voyage_api_key.txt
 zgloszenia.txt
+baza_wektorowa/
 __pycache__/
 *.pyc
 .venv/
